@@ -1,0 +1,39 @@
+{
+    "type": "object",
+    "properties": {
+        "relation": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "uploadType": {
+            "type": "string"
+        },
+        "upload_protocol": {
+            "type": "string"
+        },
+        "source_androidApp_certificate_sha256Fingerprint": {
+            "type": "string"
+        },
+        "source_androidApp_packageName": {
+            "type": "string"
+        },
+        "source_web_site": {
+            "type": "string"
+        },
+        "target_androidApp_certificate_sha256Fingerprint": {
+            "type": "string"
+        },
+        "target_androidApp_packageName": {
+            "type": "string"
+        },
+        "target_web_site": {
+            "type": "string"
+        }
+    }
+}

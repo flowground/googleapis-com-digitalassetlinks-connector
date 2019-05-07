@@ -1,0 +1,68 @@
+{
+    "title": "Digital Asset Links",
+    "description": "Discovers relationships between online assets such as websites or mobile apps.",
+    "docsUrl": "https://developers.google.com/digital-asset-links/",
+    "url": "https://api.apis.guru/v2/specs/googleapis.com/digitalassetlinks/v1/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://digitalassetlinks.googleapis.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "digitalassetlinks_assetlinks_check": {
+            "main": "./lib/actions/digitalassetlinks_assetlinks_check.js",
+            "title": "Determines whether the specified (directional) relationship exists between\nthe specified source and target assets.\n\nThe relation describes the intent of the link between the two assets as\nclaimed by the source asset.  An example for such relationships is the\ndelegation of privileges or permissions.\n\nThis command is most often used by infrastructure systems to check\npreconditions for an action.  For example, a client may want to know if it\nis OK to send a web URL to a particular mobile app instead. The client can\ncheck for the relevant asset link from the website to the mobile app to\ndecide if the operation should be allowed.\n\nA note about security: if you specify a secure asset as the source, such as\nan HTTPS website or an Android app, the API will ensure that any\nstatements used to generate the response have been made in a secure way by\nthe owner of that asset.  Conversely, if the source asset is an insecure\nHTTP website (that is, the URL starts with `http://` instead of `https://`),\nthe API cannot verify its statements securely, and it is not possible to\nensure that the website's statements have not been altered by a third\nparty.  For more information, see the [Digital Asset Links technical design\nspecification](https://github.com/google/digitalassetlinks/blob/master/well-known/details.md).",
+            "description": "Determines whether the specified (directional) relationship exists between\nthe specified source and target assets.\n\nThe relation describes the intent of the link between the two assets as\nclaimed by the source asset.  An example for such relationships is the\ndelegation of privileges or permissions.\n\nThis command is most often used by infrastructure systems to check\npreconditions for an action.  For example, a client may want to know if it\nis OK to send a web URL to a particular mobile app instead. The client can\ncheck for the relevant asset link from the website to the mobile app to\ndecide if the operation should be allowed.\n\nA note about security: if you specify a secure asset as the source, such as\nan HTTPS website or an Android app, the API will ensure that any\nstatements used to generate the response have been made in a secure way by\nthe owner of that asset.  Conversely, if the source asset is an insecure\nHTTP website (that is, the URL starts with `http://` instead of `https://`),\nthe API cannot verify its statements securely, and it is not possible to\nensure that the website's statements have not been altered by a third\nparty.  For more information, see the [Digital Asset Links technical design\nspecification](https://github.com/google/digitalassetlinks/blob/master/well-known/details.md).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/digitalassetlinks_assetlinks_check.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "digitalassetlinks_statements_list": {
+            "main": "./lib/actions/digitalassetlinks_statements_list.js",
+            "title": "Retrieves a list of all statements from a given source that match the\nspecified target and statement string.\n\nThe API guarantees that all statements with secure source assets, such as\nHTTPS websites or Android apps, have been made in a secure way by the owner\nof those assets, as described in the [Digital Asset Links technical design\nspecification](https://github.com/google/digitalassetlinks/blob/master/well-known/details.md).\nSpecifically, you should consider that for insecure websites (that is,\nwhere the URL starts with `http://` instead of `https://`), this guarantee\ncannot be made.\n\nThe `List` command is most useful in cases where the API client wants to\nknow all the ways in which two assets are related, or enumerate all the\nrelationships from a particular source asset.  Example: a feature that\nhelps users navigate to related items.  When a mobile app is running on a\ndevice, the feature would make it easy to navigate to the corresponding web\nsite or Google+ profile.",
+            "description": "Retrieves a list of all statements from a given source that match the\nspecified target and statement string.\n\nThe API guarantees that all statements with secure source assets, such as\nHTTPS websites or Android apps, have been made in a secure way by the owner\nof those assets, as described in the [Digital Asset Links technical design\nspecification](https://github.com/google/digitalassetlinks/blob/master/well-known/details.md).\nSpecifically, you should consider that for insecure websites (that is,\nwhere the URL starts with `http://` instead of `https://`), this guarantee\ncannot be made.\n\nThe `List` command is most useful in cases where the API client wants to\nknow all the ways in which two assets are related, or enumerate all the\nrelationships from a particular source asset.  Example: a feature that\nhelps users navigate to related items.  When a mobile app is running on a\ndevice, the feature would make it easy to navigate to the corresponding web\nsite or Google+ profile.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/digitalassetlinks_statements_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
